@@ -1,5 +1,4 @@
 package model.dao.imp;
-
 import db.DB;
 import db.DbException;
 import model.dao.UserDAO;

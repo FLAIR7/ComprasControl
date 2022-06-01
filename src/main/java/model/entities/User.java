@@ -1,8 +1,8 @@
 package model.entities;
 
 public class User {
-    
-    private Long userId;
+	
+	private Long userId;
     private String name;
     private String username;
     private String password;
