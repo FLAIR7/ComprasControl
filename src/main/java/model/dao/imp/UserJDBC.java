@@ -9,13 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserJDBC implements UserDAO {
 
     private Connection conn;
-    private static PreparedStatement st = null;
-    private static ResultSet rs = null;
 
     public UserJDBC(Connection conn) {
         this.conn = conn;
@@ -23,6 +23,8 @@ public class UserJDBC implements UserDAO {
 
     @Override
     public User login(String username, String password) {
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
         try{
             st = conn.prepareStatement(
                      " SELECT * FROM" +
@@ -50,7 +52,20 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public boolean cadastrar(User user) {
+    public boolean signUp(User user) {
+    	PreparedStatement st = null;
+    	try {
+    		st = this.conn.prepareStatement("INSERT INTO user (name, username, password) VALUES (?, ?, ?)");
+    		st.setString(1, user.getName());
+    	    st.setString(2, user.getUsername());
+    	    st.setString(3, user.getPassword());
+    		st.executeUpdate();
+    		return true;
+    	} catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally{
+    		DB.closeStatement(st);
+    	}
         return false;
     }
 
@@ -70,7 +85,20 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public List<String> findAllUsers() {
-        return null;
+    public List<String> findAllUsernames() {
+    	Statement st = null;
+    	ResultSet rs = null;
+        List<String> usernames = new ArrayList<>();
+        try {
+        	st = this.conn.createStatement();
+        	rs = st.executeQuery("SELECT username FROM user");
+        	while(rs.next()) {
+        		usernames.add(rs.getString("username"));
+        	}
+        	return usernames;
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+    	return null;
     }
 }

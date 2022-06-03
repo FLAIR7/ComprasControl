@@ -8,7 +8,7 @@ public interface UserDAO {
 	
 	User login(String username, String password);
 	
-	boolean cadastrar(User user);
+	boolean signUp(User user);
 	
 	boolean checkIfUsernameExists(String username);
 	
@@ -16,5 +16,5 @@ public interface UserDAO {
 	
 	User findById(Long userId);
 	
-	List<String> findAllUsers();
-}
+    List<String> findAllUsernames();
+ }

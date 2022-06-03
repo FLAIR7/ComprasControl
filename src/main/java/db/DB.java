@@ -8,33 +8,23 @@ import java.util.Properties;
 public class DB {
     private static Connection conn = null;
 
-    public static Connection getConnection() {
+    public static Connection getConnection(){
 
         if (conn == null) {
             try {
-                Properties props = loadProperties();
-                String url = props.getProperty("dburl");
-                conn = DriverManager.getConnection(url, props);
+            	String url = "jdbc:mysql://localhost:3306/test";
+            	String user = "root";
+            	String password = "";
+            	Class.forName("com.mysql.cj.jdbc.Driver");                
+            	conn = DriverManager.getConnection(url, user, password);
 
             } catch (SQLException e) {
                 throw new DbException(e.getMessage());
+            } catch(ClassNotFoundException e) {
+            	throw new DbException(e.getMessage());
             }
         }
         return conn;
-    }
-
-    private static Properties loadProperties() {
-        try (FileInputStream fs = new FileInputStream("db.properties")) {
-
-            Properties props = new Properties();
-
-            props.load(fs);
-
-            return props;
-
-        } catch (IOException e) {
-            throw new DbException(e.getMessage());
-        }
     }
 
     public static void closeConnection() {

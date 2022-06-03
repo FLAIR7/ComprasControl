@@ -9,11 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.entities.User;
+import model.service.UserService;
 import model.validation.UserValidation;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet{
-		
+	
+	private UserService service = new UserService();
+	
+	public RegisterServlet() {
+		super();
+	}
+	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -32,6 +39,7 @@ public class RegisterServlet extends HttpServlet{
         	if(isFieldValid) {
         		if(isPasswordValid) {
         			User user = new User(null, name, username, password);
+        			service.signUp(user);
         		} else {
         			setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "As senhas não correspondem");
         		}

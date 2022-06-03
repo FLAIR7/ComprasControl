@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="./assets/css/login.css">
-		<title>Login</title>
+		<title>Sign Up</title>
 	</head>
 	<body>
 		
