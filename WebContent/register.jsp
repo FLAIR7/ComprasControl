@@ -21,27 +21,36 @@
 					</div>
 					<div class="card-body">
 						<h4 class="title text-center mt-4">
-							Entrar no Compras Control
+							Cadastro
 						</h4>
-						<form class="form-box px-3">
+						<form action="register" class="form-box px-3" method="post">
 							<div class="form-input">
-								<span><i class="fa fa-envelope-o"></i></span>
-								<input type="text" placeholder="username" required>
+								<span><i class="fa fa-user"></i></span>
+								<input type="text" placeholder="name" name="name" required>
 							</div>
 							<div class="form-input">
-								<span><i class="fa fa-key"></i></span>
-								<input type="password" placeholder="password" required>
+								<span><i class="fa fa-envelope-o"></i></span>
+								<input type="text" placeholder="username" name="username" required>
+							</div>
+							<div class="form-input">
+								<span><i class="fa fa-lock"></i></span>
+								<input type="password" placeholder="password" name="password" pattern="^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$" title="Minimo de 8 characters. Deve ter pelo menos 1 caractere especial, um número e uma letra Maiscula" required>
+							</div>
+							
+							<div class="form-input">
+								<span><i class="fa fa-lock"></i></span>
+								<input type="password" placeholder="same password" pattern="^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$" title="Minimo de 8 characters. Deve ter pelo menos 1 caractere especial, um número e uma letra Maiscula" name="password2" required>
 							</div>
 							
 							<div class="form-input mb-3">
 								<button type="submit" class="btn btn-block text-uppercase">
-									Login
+									Cadastrar
 								</button>
 							</div>
 							
 							<div class="text-center mb-2">
-								Ainda não possui uma conta?
-								<a href="/ComprasControl/register" class="register-link">
+								Já possui uma conta?
+								<a href="/ComprasControl/login" class="register-link">
 									Clique Aqui
 								</a>
 							</div>

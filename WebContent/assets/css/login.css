@@ -20,7 +20,7 @@
 			
 			.img-left {
 				width: 45%;
-				background: url(../assets/img/banner.jpg) center;
+				background: url("./img/banner.jpg") center;
 				background-size: cover;
 			}
 			
