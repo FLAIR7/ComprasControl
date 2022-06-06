@@ -13,12 +13,23 @@ public class UserValidation{
 	
 	private static String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$";    
 	
-	public static boolean usernameExist(String newUsername) {
+	public static boolean usernameExistRegister(String newUsername) {
 		UserDAO dao = DaoFactory.createUserDao();
 		List<String> usernames = dao.findAllUsernames();
 		boolean exist = usernames.stream().anyMatch(x -> x.equals(newUsername));
 		if(exist) {
 			throw new LoginException("User already exist");
+		}
+		return false;
+	}
+	
+	public static boolean usernameExistLogin(String username) {
+		UserDAO dao = DaoFactory.createUserDao();
+		List<String> usernames = dao.findAllUsernames();
+		for(String user : usernames) {
+			if(user.equals(username)) {
+				return true;
+			}
 		}
 		return false;
 	}

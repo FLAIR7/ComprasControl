@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.entities.User;
+import model.exceptions.UserExistException;
 import model.service.UserService;
 import model.validation.UserValidation;
 
@@ -35,19 +36,25 @@ public class RegisterServlet extends HttpServlet{
         	String password2 = request.getParameter("password2");
         	boolean isPasswordValid = UserValidation.isPasswordValid(password, password2);
         	boolean isFieldValid = UserValidation.isFieldValid(password);
-        	System.out.println("senha: " + isPasswordValid + ", Field: " + isFieldValid);
         	if(isFieldValid) {
         		if(isPasswordValid) {
-        			User user = new User(null, name, username, password);
-        			service.signUp(user);
+        			try {
+	        			User user = new User(null, name, username, password);
+	        			service.signUp(user);
+	        			setResponse(response, HttpServletResponse.SC_OK, "Sign Up complete");
+        			} catch(UserExistException e) {
+        				setResponse(response, HttpServletResponse.SC_CONFLICT, e.getMessage());
+        			}
         		} else {
-        			setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "As senhas não correspondem");
+        			setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "passwords are not the same");
         		}
+        	} else {
+        		setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "Some field is invalid!");
         	}
         } catch(Exception e) {
+        	setResponse(response, HttpServletResponse.SC_CONFLICT, "Something went wrong");
         	e.printStackTrace();
         }
-        
         
 	}
 	

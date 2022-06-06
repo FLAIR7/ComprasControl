@@ -26,17 +26,12 @@ public class UserJDBC implements UserDAO {
     	PreparedStatement st = null;
     	ResultSet rs = null;
         try{
-            st = conn.prepareStatement(
-                     " SELECT * FROM" +
-                        " user WHERE" +
-                        " username = ?" +
-                        " AND password = ?"
-            );
+            st = conn.prepareStatement("SELECT * FROM user WHERE username = ? AND password = ?");
             st.setString(1, username);
             st.setString(2, password);
             rs = st.executeQuery();
             if(rs.next()) {
-                return new User(rs.getLong("userId"), rs.getString("name"),
+                return new User(rs.getLong("user_id"), rs.getString("name"),
                                 rs.getString("username"), rs.getString("password"));
             }
             else if(checkIfUsernameExists(username)) {

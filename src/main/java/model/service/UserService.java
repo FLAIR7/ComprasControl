@@ -14,9 +14,16 @@ public class UserService {
 	}
 	
 	public boolean signUp(User user) {
-		UserValidation.usernameExist(user.getName());
+		UserValidation.usernameExistRegister(user.getName());
 		dao.signUp(user);
 		return true;
+	}
+	
+	public User login(String username, String password) {
+		if(UserValidation.usernameExistLogin(username)) {
+			return dao.login(username, password);
+		}
+		return null;
 	}
 	
 }
