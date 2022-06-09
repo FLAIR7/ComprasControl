@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet{
         			try {
 	        			User user = new User(null, name, username, password);
 	        			service.signUp(user);
-	        			setResponse(response, HttpServletResponse.SC_OK, "Sign Up complete");
+//	        			setResponse(response, HttpServletResponse.SC_OK, "Sign Up complete");
         			} catch(UserExistException e) {
         				setResponse(response, HttpServletResponse.SC_CONFLICT, e.getMessage());
         			}

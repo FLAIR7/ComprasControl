@@ -7,13 +7,15 @@
 		<meta name="viewport" content="width=device-width", initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">		
 		<link rel="stylesheet" href="./assets/css/login.css">
 		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 		<script src="./assets/javascript/fa.js"></script>
 		<title>Sign Up</title>
 	</head>
-	<body>
+	<body>		
 		
 		<div class="container">
 			<div class="row px-3">
@@ -28,7 +30,7 @@
 						<form action="register" class="form-box px-3" method="post" autocomplete="off" id="form-sign">
 							<div class="form-input">
 								<span><i class="fa fa-user"></i></span>
-								<input type="text" placeholder="name" name="name" required>
+								<input id="name" type="text" placeholder="name" name="name" required>
 							</div>
 							<div class="form-input">
 								<span><i class="fa fa-envelope-o"></i></span>
@@ -45,7 +47,7 @@
 							</div>
 							
 							<div class="form-input mb-3">
-								<button type="submit" class="btn btn-block text-uppercase">
+								<button type="submit" class="btn btn-block text-uppercase" id="sign-in">
 									Join Now!
 								</button>
 							</div>
@@ -64,5 +66,6 @@
 		
 	</body>
 	<script src="./assets/javascript/sign.js"></script>
+	
 	
 </html>

@@ -15,6 +15,7 @@ import model.dao.DaoFactory;
 import model.entities.User;
 import model.exceptions.LoginException;
 import model.service.UserService;
+import model.validation.UserValidation;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
@@ -36,13 +37,20 @@ public class LoginServlet extends HttpServlet{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			User user = service.login(username, password);
+			if(!UserValidation.usernameExistLogin(username)) {
+				System.out.println("usuário não existe");
+			}
 			if(user != null) {
+				HttpSession oldSession = request.getSession(false);
+				if(oldSession != null) {
+					oldSession.invalidate();
+				}
 				System.out.println("Funcionou");
-				HttpSession session = request.getSession();
+				HttpSession session = request.getSession(true);
 				session.setAttribute("user", user);
-		        request.getRequestDispatcher("home.jsp").forward(request, response);
+				response.sendRedirect("home");
 			} else {
-				System.out.println("Usuário não existe");
+				System.out.println("Username ou senha incorretos");
 		        request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		} catch(LoginException e) {

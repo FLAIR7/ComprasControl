@@ -11,5 +11,43 @@ html, body {
 }
 
 body {
-	background: #0062E6 !important;			
+	height: 100vh;
+	background: #0062E6 !important;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; 			
+}
+
+.titulo {
+	font-size: 32px;
+	font-weight: bold;
+	color: white;
+}
+
+.cartao {
+	border-radius: 20px !important;
+}
+
+button {
+	background-color: #0062E6;
+	border: 0.5px solid white;
+	color: white;
+	width: 180px;
+	height: 60px;
+}
+
+button:hover {
+	background-color: #fff;
+	color: black;
+	
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: #0062E6;
+	text-decoration: none;
 }
