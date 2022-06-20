@@ -10,7 +10,7 @@ public interface ProductDAO {
 	
 	List<Product> findAll();
 	
-	List<Product> findByName();
+	List<Product> findByName(String name);
 	
 	void save(Product product);
 	
@@ -18,6 +18,6 @@ public interface ProductDAO {
 	
 	void deleteById(Product product);
 	
-	boolean isUserProduct(Long id);
+	boolean isProductValid(Long id);
 	
 }

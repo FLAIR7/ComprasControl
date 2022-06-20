@@ -21,5 +21,24 @@ public class ProductService {
 		return dao.findAll();
 	}
 	
+	public Product findById(Long id) {
+		return dao.findById(id);
+	}
+
+	public void deleteById(Long id) {
+		Product product = dao.findById(id);
+		if(product != null) {
+			dao.deleteById(product);
+		}
+	}
+	
+	public void save(Product p) {
+		dao.save(p);
+	}
+
+	public void update(Product p) {
+		dao.update(p);
+	}
+	
 	
 }

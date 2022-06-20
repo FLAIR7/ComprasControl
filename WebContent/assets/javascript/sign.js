@@ -1,22 +1,47 @@
-$("#sign-in").click(function () {
-	var name = $("#name").val();
-	var username = $("#username").val();
-	var password = $("#password").val();
-	var password2 = $("#password2").val();
-	
-	if(name == '' || username == '' || password == '' || password2 == '') {
-		swal({
-			title: "Fields are empty!",
-			text: "Please check the missing field!",
-			icon: "warning",
-			button: "OK",
-		});
-	} else {
-		swal({
-			title: "Success!",
-			text: "User signed!",
-			icon: "success",
-			button: "OK",
-		});
-	}
+$(document).ready(function (){
+	$('#form-sign').submit(function (e){
+		e.preventDefault();
+		var name = $("#name").val();
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var password2 = $("#password2").val();
+		
+		if(password != password2){
+			Swal.fire({
+  				icon: 'error',
+  				title: 'Password not the same!',
+  				text: 'Please check the passwords!',
+			})
+		}
+		else if(name == '' || username == '' || password == '' || password2 == '') {
+			Swal.fire({
+  				icon: 'error',
+  				title: 'Fields are empty!',
+  				text: 'Please check the missing field!',
+			})
+		} else {
+			$.ajax({
+				method: 'POST',
+				url: 'login',
+				data: {
+					username: username,
+					password: password,
+				}
+			}).done(function (){
+				Swal.fire({
+					title: "Good job!",
+					text: "User signed!",
+					icon: "success",
+				});
+				setTimeout(function (){
+					$('#login-in').trigger("click");
+				}, 5000);
+				setTimeout(function () {
+                    window.location.replace("login.jsp")
+                }, 3000);
+			})
+		}
+	});
 });
+
+//sign();

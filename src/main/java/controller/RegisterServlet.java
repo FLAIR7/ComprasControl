@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+		try {
         	String name = request.getParameter("name");
         	String username = request.getParameter("username");
         	String password = request.getParameter("password");
@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet{
         			setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "passwords are not the same");
         		}
         	} else {
-        		setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "Some field is invalid!");
+//        		setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "Some field is invalid!");
         	}
         } catch(Exception e) {
         	setResponse(response, HttpServletResponse.SC_CONFLICT, "Something went wrong");

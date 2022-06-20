@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="cartao text-center">
 				<h2 class="titulo card-title mt-3 text-center">
-					Welcome, ${user.username} &#128515;
+					Welcome, ${user.username}
 				</h2>
 				<div class="mt-3">
 					<div class="form-group">

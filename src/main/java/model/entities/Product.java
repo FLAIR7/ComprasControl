@@ -45,7 +45,7 @@ public class Product {
 	public void setComprado(boolean comprado) {
 		this.comprado = comprado;
 	}
-	
+
 	@Override
     public int hashCode() {
         final int prime = 31;
@@ -77,6 +77,6 @@ public class Product {
     }
     
     public String comprado() {
-    	return comprado ? "<font color=#3CB371>" + "Sim" + "<font color=\"black\">" : "<font color=#FF0000>" + "Não" + "<font color=\"black\">";
+    	return comprado ? "<font color=#3CB371>" + "Yes" + "<font color=\"black\">" : "<font color=#FF0000>" + "No" + "<font color=\"black\">";
     }
 }

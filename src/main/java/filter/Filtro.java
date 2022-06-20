@@ -16,7 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import model.entities.User;
 
-@WebFilter(urlPatterns = {"/account.jsp", "/account", "/home.jsp", "/home", "/products.jsp", "/products"})
+@WebFilter(urlPatterns = {"/account.jsp", "/account", "/home.jsp", "/home", "/products.jsp", "/products",
+		"/list.jsp", "/list"})
 public class Filtro implements Filter{
 	
 	private ServletContext context;

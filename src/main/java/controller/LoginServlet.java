@@ -37,8 +37,10 @@ public class LoginServlet extends HttpServlet{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			User user = service.login(username, password);
+			String status = "false";
 			if(!UserValidation.usernameExistLogin(username)) {
 				System.out.println("usuário não existe");
+				request.getSession().setAttribute(status, "not");
 			}
 			if(user != null) {
 				HttpSession oldSession = request.getSession(false);
