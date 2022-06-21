@@ -37,7 +37,7 @@ public class Filtro implements Filter{
 		HttpSession session = req.getSession(false);
 		if(session == null || user == null) {
 			this.context.log("Unautorized acess request");
-			res.sendRedirect(req.getContextPath() + "/login.jsp");
+			res.sendRedirect(req.getContextPath() + "/login");
 		} else {
 			chain.doFilter(request, response);
 		}

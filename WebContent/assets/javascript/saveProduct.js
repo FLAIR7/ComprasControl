@@ -12,21 +12,28 @@ $(document).on('show.bs.modal', '#exampleModal', function (event){
 function saveProduct(){
 	let name = $('#name').val();
 	let price = $('#price').val();
+	let purchase = $('#myselect option:selected').val();
 	
-	if(name == '' || name == null){
+	if(!name || !price || !purchase){
 		console.log('Error');
-	} else {
+		Swal.fire({
+				heightAuto: false,
+  				icon: 'error',
+  				title: 'teste!',
+  				text: 'teste!',
+			})
+	} else if(name && price){
 		$.ajax({
 			method: "POST",
 			url: "list?action=update",
 			data: {
 				idProduct: idProduct,
 				name: name,
-				price: price
+				price: price,
+				purchase: purchase
 			}
 		}).done( function (){
 			$("#exampleModal").modal('hide')
-//			location.reload(); 
 			window.setTimeout(function(){location.reload()},100)
 		})
 	}

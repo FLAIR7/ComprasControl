@@ -38,30 +38,32 @@
 	</head>
 	<body>
 		<header>
-			<div class="">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<a href="home" class="navbar-brand text-dark"><i
-						class="fas fa-arrow-left fa-md"></i>
-					</a>
+					
 					<a class="navbar-brand text-dark" href="#">ComprasControl.com</a>
-					<button class="navbar-toggler data-bs-toggle="collapse" data-target="#navbarMenu">
+					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
 						<span class="navbar-toggle-icon"></span>	
 					</button>
 					<div class="collapse navbar-collapse" id="navbarMenu">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active">
-								<a class="nav-link text-dark">
+								<a class="nav-link text-dark" href="home">
 									<i class="fas fa-home fa-sm"></i> Home
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark">
+								<a class="nav-link text-dark" href="logout">
 									<i class="fa fa-solid fa-store"></i> Products
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark">
+								<a class="nav-link text-dark" href="account">
 									<i class="fas fa-user-circle"></i> Account
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" href="logout">
+									<i class="fa fa-sign-out"></i> Logout
 								</a>
 							</li>
 						</ul>
@@ -70,7 +72,6 @@
 					
 					
 				</nav>
-			</div>	
 			<div>
 				<div class="">
 					<div class="maintxt d-flex align-items-center justify-content-around">
@@ -95,7 +96,7 @@
 			<div class="container-fluid">
 				<div class="">
 					<div class="table-responsive">
-						<table class="table table-borderless" data-toggle="table"
+						<table class="table table-borderless" id="table" data-toggle="table"
                            data-search="true"
                            data-pagination="true"
                            data-show-columns="true"
@@ -143,6 +144,7 @@
 							</tbody>
 						</table>
 					</div>
+				<script> if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) $('#table').addClass("table-sm");</script>
 				</div>
 			</div>
 		</section>
@@ -168,16 +170,16 @@
 		        </div>
 		        <div class="form-group">
 		        	<label for="name" class="control-label">Purchase</label>
-		        	<select class="form-control">
-		        		<option>No</option>
-		        		<option>Yes</option>
+		        	<select class="form-control" id="myselect">
+		        		<option value="false">No</option>
+		        		<option value="true">Yes</option>
 		        	</select>
 		        </div>
 		      </div>
 		      <div class="modal-footer">
 		      	 <input name="id" type="hidden" class="form-control" id="id" value="${prod.productId}">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-		        <button type="button" class="btn btn-primary" onclick="saveProduct()" id="salvar">Salvar</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-primary" onclick="saveProduct()" id="salvar">Save</button>
 		      </div>
 		    </div>
 		  </div>
@@ -189,18 +191,18 @@
 	        <div class="modal-dialog modal-dialog-centered" role="document">
 	            <div class="modal-content">
 	                <div class="modal-header">
-	                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Atenção <i
+	                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Warning <i
 	                            class="fas fa-exclamation-triangle"></i></h5>
 	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                        <span aria-hidden="true">&times;</span>
 	                    </button>
 	                </div>
 	                <div class="modal-body">
-	                    Você tem certeza que deseja excluir o produto <strong><span id="nomeProd"></span></strong>?
+	                    Are you sure you want to delete this item <strong><span id="nomeProd"></span></strong>?
 	                </div>
 	                <div class="modal-footer">
-	                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-	                    <button type="button" class="btn btn-danger" id="excluir">Excluir</button>
+	                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	                    <button type="button" class="btn btn-danger" id="excluir">Delete</button>
 	                </div>
 	            </div>
 	        </div>

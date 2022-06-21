@@ -29,12 +29,8 @@ public class ListServlet extends HttpServlet{
 			request.getSession().setAttribute("products", service.findAll());
 			String action = request.getParameter("action");
 			if(action != null) {
-				System.out.println("Entrou em != null, Valor de action " + action);
 				if(action.equals("delete")) {
-					System.out.println("entrou aqui");
 					Long id =  Long.parseLong(request.getParameter("idProduct"));
-//					Product produto = service.findById(id);
-					System.out.println("Id " + id);
 					service.deleteById(id);
 				}
 			}
@@ -54,8 +50,10 @@ public class ListServlet extends HttpServlet{
 					String id = request.getParameter("idProduct");
 					String name = request.getParameter("name");
 					Double price = Double.parseDouble(request.getParameter("price"));
+					String purchase = request.getParameter("purchase");
 					startService(request, response);
-					Product p = new Product(!id.isEmpty() ? Long.parseLong(id) : null, name, price, false);
+					Product p = new Product(!id.isEmpty() ? Long.parseLong(id) : null, name, price, 
+							purchase == null || purchase.equals("false") ? false : true);
 					if(p.getProductId() == null) {
 						service.save(p);
 					} else {

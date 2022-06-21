@@ -8,13 +8,15 @@ $(document).ready(function (){
 		
 		if(password != password2){
 			Swal.fire({
+				heightAuto: false,
   				icon: 'error',
-  				title: 'Password not the same!',
+  				title: 'Passwords not the same!',
   				text: 'Please check the passwords!',
 			})
 		}
 		else if(name == '' || username == '' || password == '' || password2 == '') {
 			Swal.fire({
+				heightAuto: false,
   				icon: 'error',
   				title: 'Fields are empty!',
   				text: 'Please check the missing field!',
@@ -29,6 +31,7 @@ $(document).ready(function (){
 				}
 			}).done(function (){
 				Swal.fire({
+					heightAuto: false,
 					title: "Good job!",
 					text: "User signed!",
 					icon: "success",

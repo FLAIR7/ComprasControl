@@ -24,11 +24,11 @@
 		<input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
 		<div class="container">
 			<div class="row px-3">
-				<div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+				<div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0" id="card">
 					<div class="img-left d-none d-md-flex"></div>
 					<div class="card-body">
 						<h4 class="title text-center mt-4">
-							Login into Account &#128512;
+							Login into Account
 						</h4>
 						<form action="login" method="post" class="form-box px-3" autocomplete="off" id="form-login">
 							<div class="form-input">

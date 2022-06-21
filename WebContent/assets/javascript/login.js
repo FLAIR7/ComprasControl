@@ -6,6 +6,7 @@ $(document).ready(function (){
 		
 		if(username == '' || password == '') {
 			Swal.fire({
+				heightAuto: false,
   				icon: 'error',
   				title: 'Fields are empty!',
   				text: 'Please check the missing field!',
@@ -28,7 +29,7 @@ $(document).ready(function (){
 			}).fail(function (){
 				Swal.fire({
   					icon: 'error',
-  					title: 'User does not exist!',
+  					title: 'Something went wrong!',
   					text: 'You should create an account first!',
 				})
 			})

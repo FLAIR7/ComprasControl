@@ -14,6 +14,14 @@
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="./assets/javascript/fa.js"></script>
 		<script src="./assets/javascript/sign.js"></script>
+		<style>
+		.img-left {
+			width: 45%;
+			background: url("./assets/css/img/banner2.jpg") right;
+			background-size: cover;
+		}
+		
+		</style>
 		<title>Sign Up</title>
 	</head>
 	<body>		
@@ -25,7 +33,7 @@
 					</div>
 					<div class="card-body">
 						<h4 class="title text-center mt-4">
-							Sign Up &#128512;
+							Sign Up
 						</h4>
 						<form action="register" class="form-box px-3" method="post" autocomplete="off" id="form-sign">
 							<div class="form-input">
