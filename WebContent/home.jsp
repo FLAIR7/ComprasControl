@@ -10,7 +10,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./assets/css/home.css">
-		<title>Home</title>
+		<link rel="icon" type="image/png" href="./assets/css/img/favicon-32x32.png" sizes="32x32" />		
+		<title>Compras Control</title>
 	</head>
 	<body>
 		<div class="container">
@@ -19,15 +20,6 @@
 					Welcome, ${user.username}
 				</h2>
 				<div class="mt-3">
-					<div class="form-group">
-						<div class="ajuda">
-							<a href="products">
-								<button>
-									<i class="fa fa-solid fa-store"></i> Products
-								</button>
-							</a>
-						</div>
-					</div>
 					<div class="form-group">
 						<div class="ajuda">
 							<a href="list">

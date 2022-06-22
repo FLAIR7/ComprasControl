@@ -16,9 +16,10 @@ public class UserValidation{
 	public static boolean usernameExistRegister(String newUsername) {
 		UserDAO dao = DaoFactory.createUserDao();
 		List<String> usernames = dao.findAllUsernames();
-		boolean exist = usernames.stream().anyMatch(x -> x.equals(newUsername));
-		if(exist) {
-			throw new LoginException("User already exist");
+		for(String user : usernames) {
+			if(user.equals(newUsername)) {
+				return true;
+			}
 		}
 		return false;
 	}

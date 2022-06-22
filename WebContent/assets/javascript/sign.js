@@ -1,50 +1,58 @@
 $(document).ready(function (){
-	$('#form-sign').submit(function (e){
-		e.preventDefault();
+	var status = $('#status').val();
+	$('username').change(function (){
+	var username = $('#username').val();					
+	$.ajax({
+		type: 'POST',
+		url: 'register',
+		data: {
+			username: username
+		}
+	})	
+});
+	if(status == 'exists'){
+		Swal.fire({
+			heightAuto: false,
+			title: "Username",
+			text: "Username already exists!",
+			icon: "error",
+		});
+	} 
+	else if(status == "not"){
+		Swal.fire({
+			heightAuto: false,
+			title: "Passwords",
+			text: "Passwords are not same!",
+			icon: "error",
+		});
+	} else if(status == "invalid"){
+		Swal.fire({
+			heightAuto: false,
+			title: "Field Invalid",
+			text: "Please chech the missing field!",
+			icon: "error",
+		});
+	} else if(status == "done"){
 		var name = $("#name").val();
 		var username = $("#username").val();
 		var password = $("#password").val();
 		var password2 = $("#password2").val();
-		
-		if(password != password2){
+						
+		$.ajax({
+			method: 'POST',
+			url: 'register',
+			data: {
+				username: username,
+				password: password,
+			},
+		}).done(function (){
 			Swal.fire({
 				heightAuto: false,
-  				icon: 'error',
-  				title: 'Passwords not the same!',
-  				text: 'Please check the passwords!',
-			})
-		}
-		else if(name == '' || username == '' || password == '' || password2 == '') {
-			Swal.fire({
-				heightAuto: false,
-  				icon: 'error',
-  				title: 'Fields are empty!',
-  				text: 'Please check the missing field!',
-			})
-		} else {
-			$.ajax({
-				method: 'POST',
-				url: 'login',
-				data: {
-					username: username,
-					password: password,
-				}
-			}).done(function (){
-				Swal.fire({
-					heightAuto: false,
-					title: "Good job!",
-					text: "User signed!",
-					icon: "success",
-				});
-				setTimeout(function (){
-					$('#login-in').trigger("click");
-				}, 5000);
-				setTimeout(function () {
-                    window.location.replace("login.jsp")
-                }, 3000);
-			})
-		}
-	});
+				title: "Good job!",
+				text: "User signed!",
+				icon: "success",
+			});
+							
+		})
+	}
 });
-
-//sign();

@@ -9,6 +9,8 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css">		
+		<link rel="icon" type="image/png" href="./assets/css/img/favicon-32x32.png" sizes="32x32" />		
+		
 		 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -17,11 +19,15 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>	
         <script src="./assets/javascript/deleteProduct.js"></script>
         <script src="./assets/javascript/saveProduct.js"></script>
-		<title>Account</title>
+		<title>Compras Control</title>
 	</head>
 	<body>
 		<header>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="list"> <i
+                        class="fas fa-arrow-left fa-md"> </i>
+                    </a>
+					
 					
 					<a class="navbar-brand text-dark" href="#">ComprasControl.com</a>
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -32,11 +38,6 @@
 							<li class="nav-item active">
 								<a class="nav-link text-dark" href="home">
 									<i class="fas fa-home fa-sm"></i> Home
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" href="products">
-									<i class="fa fa-solid fa-store"></i> Products
 								</a>
 							</li>
 							<li class="nav-item">

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,22 +35,37 @@ public class RegisterServlet extends HttpServlet{
         	String username = request.getParameter("username");
         	String password = request.getParameter("password");
         	String password2 = request.getParameter("password2");
-        	boolean isPasswordValid = UserValidation.isPasswordValid(password, password2);
-        	boolean isFieldValid = UserValidation.isFieldValid(password);
-        	if(isFieldValid) {
-        		if(isPasswordValid) {
-        			try {
-	        			User user = new User(null, name, username, password);
-	        			service.signUp(user);
-//	        			setResponse(response, HttpServletResponse.SC_OK, "Sign Up complete");
-        			} catch(UserExistException e) {
-        				setResponse(response, HttpServletResponse.SC_CONFLICT, e.getMessage());
-        			}
-        		} else {
-        			setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "passwords are not the same");
-        		}
+        	RequestDispatcher dispatcher = null;
+        	
+        	boolean usernameExists = UserValidation.usernameExistRegister(username);
+        	if(usernameExists) {
+        		request.setAttribute("status", "exists");
+        		dispatcher = request.getRequestDispatcher("register.jsp");
+        		dispatcher.forward(request, response);
         	} else {
-//        		setResponse(response, HttpServletResponse.SC_BAD_REQUEST, "Some field is invalid!");
+	        	boolean isPasswordValid = UserValidation.isPasswordValid(password, password2);
+	        	boolean isFieldValid = UserValidation.isFieldValid(password);
+	        	if(isFieldValid) {
+	        		if(isPasswordValid) {
+	        			try {
+		        			User user = new User(null, name, username, password);
+		        			service.signUp(user);
+		        			request.setAttribute("status", "done");
+		            		dispatcher = request.getRequestDispatcher("register.jsp");
+		            		dispatcher.forward(request, response);
+	        			} catch(UserExistException e) {
+	        				setResponse(response, HttpServletResponse.SC_CONFLICT, e.getMessage());
+	        			}
+	        		} else {
+	            		request.setAttribute("status", "not");
+	            		dispatcher = request.getRequestDispatcher("register.jsp");
+	            		dispatcher.forward(request, response);
+	        		}
+	        	} else {
+	        		request.setAttribute("status", "invalid");
+	        		dispatcher = request.getRequestDispatcher("register.jsp");
+	        		dispatcher.forward(request, response);
+	        	}
         	}
         } catch(Exception e) {
         	setResponse(response, HttpServletResponse.SC_CONFLICT, "Something went wrong");

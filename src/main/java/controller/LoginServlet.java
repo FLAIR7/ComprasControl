@@ -36,24 +36,25 @@ public class LoginServlet extends HttpServlet{
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+        	RequestDispatcher dispatcher = null;
 			User user = service.login(username, password);
-			String status = "false";
 			if(!UserValidation.usernameExistLogin(username)) {
-				System.out.println("usuário não existe");
-				request.getSession().setAttribute(status, "not");
-			}
+				request.setAttribute("status", "not");
+				dispatcher = request.getRequestDispatcher("login.jsp");
+        		dispatcher.forward(request, response);
+			}  
 			if(user != null) {
 				HttpSession oldSession = request.getSession(false);
 				if(oldSession != null) {
 					oldSession.invalidate();
 				}
-				System.out.println("Funcionou");
 				HttpSession session = request.getSession(true);
 				session.setAttribute("user", user);
-				response.sendRedirect("home");
+//				response.sendRedirect("home");
 			} else {
-				System.out.println("Username ou senha incorretos");
-		        request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.setAttribute("status", "incorrect");
+				dispatcher = request.getRequestDispatcher("login.jsp");
+        		dispatcher.forward(request, response);
 			}
 		} catch(LoginException e) {
 			e.printStackTrace();

@@ -13,7 +13,8 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css">		
-		 
+		<link rel="icon" type="image/png" href="./assets/css/img/favicon-32x32.png" sizes="32x32" />		
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     	<script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
@@ -22,7 +23,7 @@
         <script src="./assets/javascript/deleteProduct.js"></script>
         <script src="./assets/javascript/saveProduct.js"></script>
 		
-		<title>My List</title>
+		<title>Compras Control</title>
 		<style>
 		body {
 			background-color: white;
@@ -40,7 +41,7 @@
 		<header>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					
-					<a class="navbar-brand text-dark" href="#">ComprasControl.com</a>
+					<a class="navbar-brand text-dark">ComprasControl.com</a>
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
 						<span class="navbar-toggle-icon"></span>	
 					</button>
@@ -49,11 +50,6 @@
 							<li class="nav-item active">
 								<a class="nav-link text-dark" href="home">
 									<i class="fas fa-home fa-sm"></i> Home
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" href="logout">
-									<i class="fa fa-solid fa-store"></i> Products
 								</a>
 							</li>
 							<li class="nav-item">
@@ -121,7 +117,7 @@
 								<c:forEach items="${products}" var="prod">
 									<tr>
 										<td data-label="name" style="text-align: left">${prod.name}</td>
-										<td data-label="price" style="text-align: left">R$ ${prod.price}</td>
+										<td data-label="price" style="text-align: left">$ ${prod.price}</td>
 										<td data-label="comprado" style="text-align: left">${prod.comprado()}</td>
 										<td style="text-align: left">
 											<button type="button" 

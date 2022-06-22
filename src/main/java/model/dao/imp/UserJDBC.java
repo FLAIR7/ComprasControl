@@ -81,12 +81,12 @@ public class UserJDBC implements UserDAO {
 
     @Override
     public List<String> findAllUsernames() {
-    	Statement st = null;
+    	PreparedStatement st = null;
     	ResultSet rs = null;
         List<String> usernames = new ArrayList<>();
         try {
-        	st = this.conn.createStatement();
-        	rs = st.executeQuery("SELECT username FROM user");
+        	st = this.conn.prepareStatement("SELECT * FROM user");
+        	rs = st.executeQuery();
         	while(rs.next()) {
         		usernames.add(rs.getString("username"));
         	}

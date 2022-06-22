@@ -9,19 +9,18 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.css">		
 		<link rel="stylesheet" type="text/css" href="./assets/css/login.css">
+		<link rel="icon" type="image/png" href="./assets/css/img/favicon-32x32.png" sizes="32x32" />		
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" type="text/javascript"></script>		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js" type="text/javascript"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	
 		<script src="./assets/javascript/fa.js"></script>
 		<script src="./assets/javascript/login.js"></script>
 	
-		<title>Login</title>
+		<title>Compras Control</title>
 	</head>
 	<body>				
-		<input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
+		<input type="hidden" id="status" value="<%=request.getAttribute("status")%>">		
 		<div class="container">
 			<div class="row px-3">
 				<div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0" id="card">
