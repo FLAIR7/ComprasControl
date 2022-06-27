@@ -48,12 +48,12 @@
 							</div>
 							<div class="form-input">
 								<span><i class="fa fa-lock"></i></span>
-								<input type="password" placeholder="password" name="password" pattern="^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$" title="Minimo de 8 characters. Deve ter pelo menos 1 caractere especial, um número e uma letra Maiscula" id="password" >
+								<input type="password" placeholder="password" name="password"  id="password" >
 							</div>
 							
 							<div class="form-input">
 								<span><i class="fa fa-lock"></i></span>
-								<input type="password" placeholder="same password" pattern="^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$" title="Minimo de 8 characters. Deve ter pelo menos 1 caractere especial, um número e uma letra Maiscula" name="password2" id="password2" >
+								<input type="password" placeholder="same password" name="password2" id="password2" >
 							</div>
 							
 							<div class="form-input mb-3">
@@ -64,7 +64,7 @@
 							
 							<div class="text-center mb-2">
 								Already have an Account?
-								<a href="/ComprasControl/login" class="register-link">
+								<a href="/ComprasControl/" class="register-link">
 									Sign in
 								</a>
 							</div>

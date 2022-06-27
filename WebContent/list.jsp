@@ -30,7 +30,7 @@
 		}
 		.maintxt{
 			height: 300px;
-			background-image: url(./assets/css/img/list.jpg);
+			background: url(./assets/css/img/list.jpg);
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
@@ -41,14 +41,14 @@
 		<header>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					
-					<a class="navbar-brand text-dark">ComprasControl.com</a>
+					<a class="navbar-brand text-dark ">Compras Control.com</a>
 					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-						<span class="navbar-toggle-icon"></span>	
+						<span class="navbar-toggler-icon"></span>	
 					</button>
 					<div class="collapse navbar-collapse" id="navbarMenu">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active">
-								<a class="nav-link text-dark" href="home">
+								<a class="nav-link active text-dark" href="home">
 									<i class="fas fa-home fa-sm"></i> Home
 								</a>
 							</li>
@@ -145,6 +145,7 @@
 			</div>
 		</section>
 		
+		<!-- Edit and Add Modal -->
 
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -181,6 +182,8 @@
 		  </div>
 		</div>
 				
+				
+		<!-- Delete Modal -->
 				
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

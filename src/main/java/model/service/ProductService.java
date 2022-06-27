@@ -6,6 +6,7 @@ import model.dao.DaoFactory;
 import model.dao.ProductDAO;
 import model.entities.Product;
 import model.entities.User;
+import model.validation.ProductValidation;
 
 public class ProductService {
 	
@@ -33,6 +34,8 @@ public class ProductService {
 	}
 	
 	public void save(Product p) {
+		ProductValidation.isNameValid(p.getName());
+		p.setPrice(ProductValidation.isPriceValid(p.getPrice()));
 		dao.save(p);
 	}
 

@@ -28,20 +28,20 @@ $(document).ready(function (){
 	} else if(status == "invalid"){
 		Swal.fire({
 			heightAuto: false,
-			title: "Field Invalid",
-			text: "Please chech the missing field!",
+			title: "Passwords Invalid",
+			text: "must be 8 character, 1 lower 1 upper 1 number and 1 symbol!!",
 			icon: "error",
 		});
 	} else if(status == "done"){
-		var name = $("#name").val();
+		var name = $('#name').val();
 		var username = $("#username").val();
 		var password = $("#password").val();
-		var password2 = $("#password2").val();
-						
+		
 		$.ajax({
 			method: 'POST',
 			url: 'register',
 			data: {
+				name : name,
 				username: username,
 				password: password,
 			},
@@ -51,8 +51,8 @@ $(document).ready(function (){
 				title: "Good job!",
 				text: "User signed!",
 				icon: "success",
-			});
-							
+			});						
 		})
 	}
 });
+

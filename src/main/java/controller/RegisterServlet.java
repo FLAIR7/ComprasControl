@@ -36,7 +36,8 @@ public class RegisterServlet extends HttpServlet{
         	String password = request.getParameter("password");
         	String password2 = request.getParameter("password2");
         	RequestDispatcher dispatcher = null;
-        	
+        	response.setContentType("text/plain");
+        	response.setCharacterEncoding("UTF-8");
         	boolean usernameExists = UserValidation.usernameExistRegister(username);
         	if(usernameExists) {
         		request.setAttribute("status", "exists");

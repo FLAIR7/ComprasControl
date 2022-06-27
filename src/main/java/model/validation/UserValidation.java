@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import model.dao.DaoFactory;
 import model.dao.UserDAO;
+import model.entities.User;
 import model.exceptions.LoginException;
 
 public class UserValidation{
@@ -43,6 +44,14 @@ public class UserValidation{
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(field);
 		return matcher.matches();
+	}
+	
+	public static void usernameValidation(User user, String username) {
+		if(!username.equals(user.getUsername())){
+			if(!usernameExistLogin(username)) {
+				user.setUsername(username);
+			}
+		}
 	}
 	
 }

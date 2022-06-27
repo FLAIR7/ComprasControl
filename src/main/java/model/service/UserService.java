@@ -26,4 +26,36 @@ public class UserService {
 		return null;
 	}
 	
+	public void update(User u) {
+		User user = dao.findById(u.getUserId());
+		if(user != null) {
+			if(!UserValidation.usernameExistLogin(u.getName())) {
+				user.setName(u.getName());
+				user.setPassword(u.getPassword());
+				user.setUsername(u.getName());
+			}
+		}
+	}
+	
+	public boolean update(Long userId, String name, String username) {
+		User user = dao.findById(userId);
+		if(user != null) {
+			UserValidation.usernameValidation(user, username);
+			user.setName(name);
+			dao.update(user);
+			return true;
+		}
+		return false;
+	}
+	
+	public User findById(Long userId) {
+		return dao.findById(userId);
+	}
+	
+	public User changePassword(User user, String newPassword, String password) {
+		user.setPassword(password);
+		dao.update(user);
+		return user;
+	}
+	
 }

@@ -24,4 +24,5 @@ Compras Control is a purchase management system using servlet.
 ## Register
 <img src="./git/register.png" alt="register">
 
-
+## List
+<img src="./git/list.png" alt="list">

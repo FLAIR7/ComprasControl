@@ -34,9 +34,6 @@ public class UserJDBC implements UserDAO {
                 return new User(rs.getLong("user_id"), rs.getString("name"),
                                 rs.getString("username"), rs.getString("password"));
             }
-            else if(checkIfUsernameExists(username)) {
-                throw new LoginException("User does not exists");
-            }
         } catch(SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
@@ -65,17 +62,36 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public boolean checkIfUsernameExists(String username) {
-        return false;
-    }
-
-    @Override
     public void update(User user) {
-
+    	PreparedStatement st = null;
+    	try {
+    		st = this.conn.prepareStatement("UPDATE user SET name = ?, username = ?, password = ? WHERE user_id = ?");
+    		st.setString(1, user.getName());
+    		st.setString(2, user.getUsername());
+    		st.setString(3, user.getPassword());
+    		st.setLong(4, user.getUserId());
+    		st.executeUpdate();
+    	} catch(SQLException e) {
+    		e.printStackTrace();
+    	}
     }
 
     @Override
     public User findById(Long userId) {
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
+    	try {
+    		st = this.conn.prepareStatement("SELECT * FROM user WHERE user_id = ?");
+    		st.setLong(1, userId);
+    		rs = st.executeQuery();
+    		if(rs.next()) {
+    			User user = new User(rs.getLong("user_id"), rs.getString("name"), rs.getString("username"),
+    					rs.getString("password"));
+    			return user;
+    		}
+    	} catch(SQLException e) {
+    		e.printStackTrace();
+    	}
         return null;
     }
 

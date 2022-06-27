@@ -13,8 +13,8 @@
 		<link rel="icon" type="image/png" href="./assets/css/img/favicon-32x32.png" sizes="32x32" />		
 		<title>Compras Control</title>
 	</head>
-	<body>
-		<div class="container">
+	<body>	
+		<div class="container d-flex justify-content-center">
 			<div class="cartao text-center">
 				<h2 class="titulo card-title mt-3 text-center">
 					Welcome, ${user.username}
@@ -40,9 +40,18 @@
 					</div>
 					<div class="form-group">
 						<div class="ajuda">
-							<a href="help">
+							<a href="https://github.com/FLAIR7/ComprasControl" target="_blank">
 								<button>
-									<i class="fa-solid fa-question"></i> Help
+									<i class="fa-brands fa-github"></i> Github
+								</button>
+							</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="conta">
+							<a href="account">
+								<button>
+									<i class="fa fa-sign-out"></i> Logout
 								</button>
 							</a>
 						</div>

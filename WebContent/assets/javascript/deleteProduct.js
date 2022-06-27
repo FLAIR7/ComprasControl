@@ -3,9 +3,7 @@ var idProduct = 0;
 $(document).on('show.bs.modal', '#exampleModalCenter', function (event){
 	$('#exampleModalCenter').modal('show')
 	var button = $(event.relatedTarget);
-	var clickedButtonId = button.data('id');
-	console.log(button);
-	console.log(clickedButtonId);
+	//var clickedButtonId = button.data('id');
 	idProduct = button.data('id');
 })
 

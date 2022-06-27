@@ -35,12 +35,18 @@ public class Filtro implements Filter{
 		HttpServletResponse res = (HttpServletResponse) response;
 		User user = (User) req.getSession().getAttribute("user");
 		HttpSession session = req.getSession(false);
+		request.setCharacterEncoding("UTF-8");
 		if(session == null || user == null) {
 			this.context.log("Unautorized acess request");
-			res.sendRedirect(req.getContextPath() + "/login");
+			res.sendRedirect(req.getContextPath() + "/login.jsp");
 		} else {
 			chain.doFilter(request, response);
 		}
+	}
+	
+	@Override
+	public void destroy() {
+		
 	}
 
 }

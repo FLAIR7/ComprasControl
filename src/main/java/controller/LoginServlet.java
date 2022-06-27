@@ -36,13 +36,9 @@ public class LoginServlet extends HttpServlet{
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-        	RequestDispatcher dispatcher = null;
-			User user = service.login(username, password);
-			if(!UserValidation.usernameExistLogin(username)) {
-				request.setAttribute("status", "not");
-				dispatcher = request.getRequestDispatcher("login.jsp");
-        		dispatcher.forward(request, response);
-			}  
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			User user = service.login(username, password);	
 			if(user != null) {
 				HttpSession oldSession = request.getSession(false);
 				if(oldSession != null) {
@@ -50,11 +46,10 @@ public class LoginServlet extends HttpServlet{
 				}
 				HttpSession session = request.getSession(true);
 				session.setAttribute("user", user);
-//				response.sendRedirect("home");
+				response.sendRedirect("home");
 			} else {
 				request.setAttribute("status", "incorrect");
-				dispatcher = request.getRequestDispatcher("login.jsp");
-        		dispatcher.forward(request, response);
+		        request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		} catch(LoginException e) {
 			e.printStackTrace();
