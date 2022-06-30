@@ -1,6 +1,9 @@
 # Compras Control
 Compras Control is a purchase management system using servlet.
 
+# Heroku
+You can test the application here: https://compras-control.herokuapp.com/
+
 # Stack
 ## Front End
 <ul>
